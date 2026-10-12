@@ -1,6 +1,4 @@
-import React, {
-  useState,
-} from "react";
+import React, { useState } from "react";
 
 import {
   Link,
@@ -12,25 +10,20 @@ import {
   setToken,
 } from "../services/auth";
 
-import Icon from "../components/Icon.jsx";
+import Navbar from "../components/Navbar.jsx";
 
-const LOGIN_IMAGE = "/OIP.webp";
+const LOGIN_IMAGE = "/images.jpg";
 
 export default function Login() {
   const navigate = useNavigate();
 
-  const [email, setEmail] =
-    useState("");
-
-  const [password, setPassword] =
-    useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const [showPassword, setShowPassword] =
     useState(false);
 
-  const [error, setError] =
-    useState("");
-
+  const [error, setError] = useState("");
   const [loading, setLoading] =
     useState(false);
 
@@ -62,16 +55,12 @@ export default function Login() {
           "/dashboard/admin",
           { replace: true }
         );
-      } else if (
-        role === "lecturer"
-      ) {
+      } else if (role === "lecturer") {
         navigate(
           "/dashboard/lecturer",
           { replace: true }
         );
-      } else if (
-        role === "student"
-      ) {
+      } else if (role === "student") {
         navigate(
           "/dashboard/student",
           { replace: true }
@@ -93,189 +82,154 @@ export default function Login() {
   }
 
   return (
-    <div className="auth-page">
-      <section
-        className="auth-visual"
-        style={{
-          backgroundImage: `linear-gradient(
-            180deg,
-            rgba(8, 23, 44, 0.24),
-            rgba(8, 23, 44, 0.88)
-          ), url("${LOGIN_IMAGE}")`,
-        }}
-      >
-        <Link
-          to="/"
-          className="brand brand--light"
+    <div className="auth-page-wrapper">
+      <Navbar />
+
+      <main className="auth-page">
+        <section
+          className="auth-visual"
+          style={{
+            backgroundImage: `linear-gradient(
+              rgba(22, 31, 27, 0.28),
+              rgba(22, 31, 27, 0.78)
+            ), url("${LOGIN_IMAGE}")`,
+          }}
         >
-          <span className="brand__mark">
-            E
-          </span>
+          <div className="auth-visual__copy">
+            <p className="hero-kicker">
+              EDUCORE
+            </p>
 
-          <span className="brand__text">
-            <strong>Educore</strong>
-            <small>
-              Learning Management System
-            </small>
-          </span>
-        </Link>
-
-        <div className="auth-visual__copy">
-          <span className="hero-kicker">
-            Welcome back
-          </span>
-
-          <h1>
-            Your learning space,
-            ready when you are.
-          </h1>
-
-          <p>
-            Continue to your personalised
-            Educore workspace.
-          </p>
-        </div>
-
-        <span className="auth-visual__footer">
-          Learn. Teach. Move forward.
-        </span>
-      </section>
-
-      <section className="auth-form-side">
-        <div className="auth-form-wrap">
-          <Link
-            to="/"
-            className="auth-back-link"
-          >
-            ← Back to home
-          </Link>
-
-          <div className="auth-heading">
-            <span className="section-kicker">
-              Secure access
-            </span>
-
-            <h2>Sign in</h2>
+            <h1>
+              Academic access in one place.
+            </h1>
 
             <p>
-              Enter your Educore account
-              details to continue.
+              Sign in to manage courses,
+              modules, academic tasks and
+              student progress.
             </p>
           </div>
+        </section>
 
-          {error && (
-            <div className="alert alert--danger">
-              <div>
-                <strong>
-                  Sign in unsuccessful
-                </strong>
+        <section className="auth-form-side">
+          <div className="auth-form-wrap">
+            <Link
+              to="/"
+              className="auth-back-link"
+            >
+              ← Back to home
+            </Link>
 
-                <span>{error}</span>
+            <div className="auth-heading">
+              <p className="section-kicker">
+                ACCOUNT ACCESS
+              </p>
+
+              <h2>
+                Sign in
+              </h2>
+
+              <p>
+                Enter your Educore email
+                address and password.
+              </p>
+            </div>
+
+            {error && (
+              <div className="alert alert--danger">
+                <div>
+                  <strong>
+                    Sign in failed
+                  </strong>
+
+                  <span>
+                    {error}
+                  </span>
+                </div>
               </div>
-            </div>
-          )}
+            )}
 
-          <form
-            className="auth-form"
-            onSubmit={submit}
-          >
-            <div className="field-group">
-              <label htmlFor="email">
-                Email address
-              </label>
-
-              <input
-                id="email"
-                className="field"
-                type="email"
-                autoComplete="email"
-                placeholder="name@example.com"
-                required
-                value={email}
-                onChange={(event) =>
-                  setEmail(
-                    event.target.value
-                  )
-                }
-              />
-            </div>
-
-            <div className="field-group">
-              <div className="field-label-row">
-                <label htmlFor="password">
-                  Password
+            <form
+              className="auth-form"
+              onSubmit={submit}
+            >
+              <div className="field-group">
+                <label htmlFor="email">
+                  Email address
                 </label>
-              </div>
 
-              <div className="password-field">
                 <input
-                  id="password"
+                  id="email"
                   className="field"
-                  type={
-                    showPassword
-                      ? "text"
-                      : "password"
-                  }
-                  autoComplete="current-password"
-                  placeholder="Enter your password"
+                  type="email"
                   required
-                  value={password}
+                  autoComplete="email"
+                  placeholder="Email address"
+                  value={email}
                   onChange={(event) =>
-                    setPassword(
+                    setEmail(
                       event.target.value
                     )
                   }
                 />
-
-                <button
-                  type="button"
-                  className="password-toggle"
-                  onClick={() =>
-                    setShowPassword(
-                      (current) =>
-                        !current
-                    )
-                  }
-                >
-                  {showPassword
-                    ? "Hide"
-                    : "Show"}
-                </button>
               </div>
-            </div>
 
-            <button
-              className="button button--primary button--full button--large"
-              type="submit"
-              disabled={loading}
-            >
-              {loading
-                ? "Signing in..."
-                : "Sign in"}
+              <div className="field-group">
+                <label htmlFor="password">
+                  Password
+                </label>
 
-              {!loading && (
-                <Icon
-                  name="arrow"
-                  size={18}
-                />
-              )}
-            </button>
-          </form>
+                <div className="password-field">
+                  <input
+                    id="password"
+                    className="field"
+                    type={
+                      showPassword
+                        ? "text"
+                        : "password"
+                    }
+                    required
+                    autoComplete="current-password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(event) =>
+                      setPassword(
+                        event.target.value
+                      )
+                    }
+                  />
 
-          <div className="auth-security-note">
-            <Icon
-              name="shield"
-              size={18}
-            />
+                  <button
+                    type="button"
+                    className="password-toggle"
+                    onClick={() =>
+                      setShowPassword(
+                        (current) =>
+                          !current
+                      )
+                    }
+                  >
+                    {showPassword
+                      ? "Hide"
+                      : "Show"}
+                  </button>
+                </div>
+              </div>
 
-            <span>
-              Your account is protected
-              through secure role-based
-              access.
-            </span>
+              <button
+                className="button button--primary button--full"
+                type="submit"
+                disabled={loading}
+              >
+                {loading
+                  ? "Signing in..."
+                  : "Sign in"}
+              </button>
+            </form>
           </div>
-        </div>
-      </section>
+        </section>
+      </main>
     </div>
   );
 }

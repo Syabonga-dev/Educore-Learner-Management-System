@@ -1,211 +1,124 @@
 import React from "react";
-
-import {
-  useNavigate,
-} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import Navbar from "../components/Navbar.jsx";
 import Icon from "../components/Icon.jsx";
 
-const HERO_IMAGE = "/OIP.webp";
+const HERO_IMAGE = "/images.jpg";
 
 export default function LandingPage() {
   const navigate = useNavigate();
 
   return (
     <div className="landing-page">
-      <div
+      <section
         className="landing-hero"
         style={{
           backgroundImage: `linear-gradient(
             90deg,
-            rgba(7, 20, 39, 0.94) 0%,
-            rgba(7, 20, 39, 0.82) 42%,
-            rgba(7, 20, 39, 0.34) 74%,
-            rgba(7, 20, 39, 0.16) 100%
+            rgba(20, 29, 25, 0.88) 0%,
+            rgba(20, 29, 25, 0.70) 48%,
+            rgba(20, 29, 25, 0.22) 100%
           ), url("${HERO_IMAGE}")`,
         }}
       >
         <Navbar landing />
 
-        <div className="landing-hero__content page-container">
+        <div className="page-container landing-hero__content">
           <div className="landing-hero__copy">
-            <span className="hero-kicker">
-              One connected learning space
-            </span>
+            <p className="hero-kicker">
+              EDUCORE LEARNING MANAGEMENT SYSTEM
+            </p>
 
             <h1>
-              Learn.
-              <br />
-              Teach.
-              <br />
-              <span>Move forward.</span>
+              Learning and teaching,
+              organised in one place.
             </h1>
 
-            <p>
-              Educore brings students,
-              lecturers and academic
-              administration into one
-              simple learning management
-              experience.
+            <p className="landing-hero__description">
+              Educore helps students, lecturers and administrators
+              manage courses, modules and academic tasks from one
+              system.
             </p>
 
             <div className="hero-actions">
               <button
                 className="button button--primary button--large"
-                onClick={() =>
-                  navigate("/login")
-                }
+                onClick={() => navigate("/login")}
               >
-                Access Educore
-
-                <Icon
-                  name="arrow"
-                  size={19}
-                />
+                Sign in
+                <Icon name="arrow" size={18} />
               </button>
 
               <a
-                href="#platform"
-                className="button button--glass button--large"
+                href="#about"
+                className="button button--hero-secondary button--large"
               >
-                Explore platform
+                About Educore
               </a>
             </div>
           </div>
-
-          <div className="hero-floating-card">
-            <div className="hero-floating-card__icon">
-              <Icon
-                name="course"
-                size={25}
-              />
-            </div>
-
-            <div>
-              <strong>
-                Everything in one place
-              </strong>
-
-              <span>
-                Courses, modules, tasks
-                and progress.
-              </span>
-            </div>
-          </div>
         </div>
-
-        <div className="landing-hero__bottom page-container">
-          <div>
-            <strong>
-              Built for learning
-            </strong>
-            <span>
-              Focused. Clear. Connected.
-            </span>
-          </div>
-
-          <div className="hero-scroll">
-            <span>Discover more</span>
-            <span className="hero-scroll__line" />
-          </div>
-        </div>
-      </div>
+      </section>
 
       <section
-        id="platform"
+        id="about"
         className="landing-section landing-section--intro"
       >
         <div className="page-container">
-          <div className="section-heading section-heading--center">
-            <span className="section-kicker">
-              Built around the academic
-              journey
-            </span>
+          <div className="section-heading">
+            <p className="section-kicker">
+              ABOUT THE PLATFORM
+            </p>
 
             <h2>
-              One platform.
-              <br />
-              Less friction.
+              A simple system for academic management.
             </h2>
 
             <p>
-              Educore keeps the important
-              parts of learning visible,
-              organised and easy to act
-              on.
+              Educore provides separate workspaces for administrators,
+              lecturers and students while keeping course information
+              in one central system.
             </p>
           </div>
 
           <div className="feature-grid">
             <article className="feature-card">
-              <div className="feature-card__number">
-                01
-              </div>
-
-              <div className="feature-card__icon">
-                <Icon
-                  name="course"
-                  size={28}
-                />
-              </div>
+              <Icon name="course" size={25} />
 
               <h3>
-                Structured learning
+                Course management
               </h3>
 
               <p>
-                Courses and modules stay
-                organised so learners
-                always know where they
-                are.
-              </p>
-            </article>
-
-            <article className="feature-card feature-card--dark">
-              <div className="feature-card__number">
-                02
-              </div>
-
-              <div className="feature-card__icon">
-                <Icon
-                  name="task"
-                  size={28}
-                />
-              </div>
-
-              <h3>
-                Clear task progress
-              </h3>
-
-              <p>
-                Students can see what is
-                due and move work from
-                not started to complete.
+                Administrators can create courses, add modules and
+                assign lecturers.
               </p>
             </article>
 
             <article className="feature-card">
-              <div className="feature-card__number">
-                03
-              </div>
-
-              <div className="feature-card__icon">
-                <Icon
-                  name="users"
-                  size={28}
-                />
-              </div>
+              <Icon name="task" size={25} />
 
               <h3>
-                Connected roles
+                Academic tasks
               </h3>
 
               <p>
-                Admins, lecturers and
-                students each get the
-                tools relevant to their
-                work.
+                Lecturers can create tasks for students enrolled in
+                their assigned courses.
+              </p>
+            </article>
+
+            <article className="feature-card">
+              <Icon name="student" size={25} />
+
+              <h3>
+                Student progress
+              </h3>
+
+              <p>
+                Students can view their work and update the progress
+                of each task.
               </p>
             </article>
           </div>
@@ -216,135 +129,85 @@ export default function LandingPage() {
         id="roles"
         className="landing-section landing-section--roles"
       >
-        <div className="page-container roles-layout">
-          <div className="roles-copy">
-            <span className="section-kicker">
-              Designed for everyone
-            </span>
-
-            <h2>
-              Different roles.
-              <br />
-              One shared system.
-            </h2>
-
-            <p>
-              Educore adapts to the
-              responsibilities of every
-              person in the learning
-              environment.
+        <div className="page-container">
+          <div className="section-heading">
+            <p className="section-kicker">
+              USER ROLES
             </p>
 
-            <button
-              className="button button--dark"
-              onClick={() =>
-                navigate("/login")
-              }
-            >
-              Sign in to your workspace
-              <Icon
-                name="arrow"
-                size={18}
-              />
-            </button>
+            <h2>
+              Each user sees the tools they need.
+            </h2>
           </div>
 
-          <div className="role-list">
-            <article className="role-row">
-              <span className="role-row__index">
-                01
+          <div className="role-grid">
+            <article className="role-card">
+              <span className="role-card__label">
+                ADMIN
               </span>
 
-              <div>
-                <h3>
-                  Administrators
-                </h3>
-                <p>
-                  Manage courses,
-                  lecturers, students
-                  and module structures.
-                </p>
-              </div>
+              <h3>
+                Administrator
+              </h3>
 
-              <Icon
-                name="arrow"
-                size={22}
-              />
+              <p>
+                Manage students, lecturers, courses and modules.
+              </p>
             </article>
 
-            <article className="role-row">
-              <span className="role-row__index">
-                02
+            <article className="role-card">
+              <span className="role-card__label">
+                LECTURER
               </span>
 
-              <div>
-                <h3>
-                  Lecturers
-                </h3>
-                <p>
-                  View assigned courses,
-                  work with modules and
-                  create tasks.
-                </p>
-              </div>
+              <h3>
+                Lecturer
+              </h3>
 
-              <Icon
-                name="arrow"
-                size={22}
-              />
+              <p>
+                View assigned courses and create academic tasks.
+              </p>
             </article>
 
-            <article className="role-row">
-              <span className="role-row__index">
-                03
+            <article className="role-card">
+              <span className="role-card__label">
+                STUDENT
               </span>
 
-              <div>
-                <h3>
-                  Students
-                </h3>
-                <p>
-                  Track tasks, deadlines
-                  and learning progress
-                  from one dashboard.
-                </p>
-              </div>
+              <h3>
+                Student
+              </h3>
 
-              <Icon
-                name="arrow"
-                size={22}
-              />
+              <p>
+                View assigned tasks and record task progress.
+              </p>
             </article>
           </div>
         </div>
       </section>
 
-      <section
-        id="about"
-        className="landing-cta"
-      >
-        <div className="page-container landing-cta__inner">
+      <section className="landing-access">
+        <div className="page-container landing-access__inner">
           <div>
-            <span className="section-kicker section-kicker--light">
-              Your learning space
-            </span>
+            <p className="section-kicker">
+              EDUCORE ACCESS
+            </p>
 
             <h2>
-              Ready when you are.
+              Sign in to continue.
             </h2>
+
+            <p>
+              Use the account issued for your Educore role.
+            </p>
           </div>
 
           <button
             className="button button--light button--large"
-            onClick={() =>
-              navigate("/login")
-            }
+            onClick={() => navigate("/login")}
           >
-            Continue to Educore
-            <Icon
-              name="arrow"
-              size={19}
-            />
+            Go to login
+            <Icon name="arrow" size={18} />
           </button>
         </div>
       </section>
@@ -357,21 +220,19 @@ export default function LandingPage() {
             </span>
 
             <span className="brand__text">
-              <strong>Educore</strong>
+              <strong>
+                Educore
+              </strong>
+
               <small>
-                Learning Management
-                System
+                Learning Management System
               </small>
             </span>
           </div>
 
           <p>
-            Learning made clearer.
-          </p>
-
-          <span>
             © 2026 Educore
-          </span>
+          </p>
         </div>
       </footer>
     </div>
